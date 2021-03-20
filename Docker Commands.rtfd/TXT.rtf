@@ -1,0 +1,369 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Monaco;
+\f3\fswiss\fcharset0 Arial-BoldMT;\f4\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red249\green249\blue249;
+\red83\green85\blue2;\red14\green14\blue14;\red26\green26\blue26;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c0\c0\c0;\cssrgb\c98039\c98039\c98039\c70196;
+\cssrgb\c40000\c40000\c0;\cssrgb\c6667\c6667\c6667;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid3\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww33100\viewh17420\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 My docker credentials:\
+\
+Username: raghavk14\
+Pwd: raghav@79\
+\
+1. Create a new image with Dockerfile\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 docker build -t mydockertestapi/api .\
+\
+The name of the image will be mydockertestapi/api\
+\
+\
+2. List out the images created.\
+\
+docker images list\
+\
+The . At the end will be signifying the current directory
+\f0\fs24 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+3. Run the image via a container\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 docker run -d --name mydockertestapi_api mydockertestapi/api\
+\
+Name of the container will be: mydockertestapi_api\
+\
+4. List out the containers running\
+docker container list\
+\
+5. To stop all the running containers\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\fs26 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\CocoaLigature1 docker stop $\cf5 (\cf3 docker ps \cf5 -\cf3 a \cf5 -\cf3 q\cf5 )\
+\
+5.1 To stop a specific container\
+Docker stop <container_name>\
+\
+6. To remove all the containers\cf3 \
+docker rm $\cf5 (\cf3 docker ps \cf5 -\cf3 a \cf5 -\cf3 q\cf5 )\
+\
+7. To run the docker compose\
+docker compose up\
+\
+8. Browse the application\
+http://localhost:5001/api/WeatherForecast\
+\
+\
+\
+\
+FROM microsoft/aspnetcore-build:2.0 AS build\
+WORKDIR /build\
+COPY . .\
+RUN dotnet restore\
+RUN dotnet publish -Release -o output\
+\
+FROM microsoft/aspnetcore:2.0\
+WORKDIR /app\
+COPY --from=build /build/output .\
+ENTRYPOINT ["dotnet","*.dll"]\
+\
+1582,1519,1501,1429
+\fs32 \cf6 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Pasted Graphic 1.png \width5860 \height11440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f2\fs32 \cf6 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf6 \
+	agile - explain it in 60 secs - check in YouTube with agile interview questions\
+	explain projects - explain your project\
+	resume - explain all the points of your resume\
+	sql server 2016 - why you adopted so late? What are new features? Tell them that the strategic APIs are using Couchbase\
+	availability - As customer base increases, how do you make your system more scalable and available - Check with Jaheer about userbase\\traffic to the site.\
+	ci\\cd - what is this explain in detail.\
+	docker - how does it work, how are you using it. Give big picture. Talk with Gautam Nath\\Ronak\
+	time complexity - diff between binary tree and graph tree\
+    alg. Performance\
+    CLR - Explain in detail about capabilities\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f3\b\fs20 \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Assessment Name:
+\f4\b0 \'a0Technical Lead -KAS (.Net Core)\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Number of Sections:
+\f4\b0 \'a013\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \cb1 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 1\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Hands on Programming\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 1\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 2\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Microservice\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 5\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 3\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Agile Delivery\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 4\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : .NET Core\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 5\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : C#\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 6\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Web API\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 7\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : CI/CD\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 8\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : SQL Server\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 9\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : GIT\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 4\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 10\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Design Pattern\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 11\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Unit Testing\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 3\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 12\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : Frontend\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 4\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+Section 13\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls1\ilvl2\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Name
+\f4\b0 : AWS / Azure\cb1 \uc0\u8232 \
+\ls1\ilvl2
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9642 	}\expnd0\expndtw0\kerning0
+Number of Question(s)
+\f4\b0 : 4\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf7 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f3\b \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Start time:
+\f4\b0 \'a0Friday, 18-Dec-2020 09:23 PM (IST)\cb1 \
+\ls1\ilvl0
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+End time:
+\f4\b0 \'a0Sunday, 20-Dec-2020 09:23 PM (IST)\cb1 \uc0\u8232 \
+\ls1\ilvl0
+\f3\b \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Time limit:
+\f4\b0 \'a0133 min(s)\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\fs32 \cf6 \cb4 \
+\
+\
+\
+\
+\
+https://sapient.udemy.com/course/design-patterns-csharp-dotnet/learn/lecture/6713116#labs\
+https://sapient.udemy.com/course/parallel-dotnet/\
+https://sapient.udemy.com/course/csharp-from-scratch/\
+https://sapient.udemy.com/course/csharp-memory-tricks-learn-how-to-master-the-garbage-collector/learn/lecture/3505444#labs\
+https://sapient.udemy.com/course/how-to-write-multi-threaded-csharp-code/\
+https://sapient.udemy.com/course/csharp-in-depth/\
+https://medium.com/@srikarnitw/microservice-chassis-489eee61dc83\
+\
+\
+\
+https://slksoft.webex.com/webappng/sites/slksoft/dashboard/pmr/santhosh.murthy\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
